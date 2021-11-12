@@ -3,12 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@agoric/eventual-send": "^0.13.30",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "captp-stream": "^3.0.0",
+    "pumpify": "^2.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
+    "ses": "^0.15.0",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
@@ -21,7 +25,11 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "globals": {
+      "lockdown": true,
+      "harden": true
+    }
   },
   "browserslist": {
     "production": [

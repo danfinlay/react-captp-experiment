@@ -2,6 +2,51 @@
 # yarn lockfile v1
 
 
+"@agoric/assert@^0.3.14":
+  version "0.3.14"
+  resolved "https://registry.yarnpkg.com/@agoric/assert/-/assert-0.3.14.tgz#5ba32391253a5412969e9827815203cfed6759a7"
+  integrity sha512-xmTJImBq4AgNQ8PeAjmYXq6Ori3enuLsl2ogcveGBadJNzsyIuib2XZrG4zJxq7qArtvS8k/2qVoLDf8Q1UiUg==
+  dependencies:
+    ses "^0.14.3"
+
+"@agoric/captp@^1.10.6":
+  version "1.10.6"
+  resolved "https://registry.yarnpkg.com/@agoric/captp/-/captp-1.10.6.tgz#7d4030f613230f666c2ef7b40c0684ac21a11d3a"
+  integrity sha512-+H0nAC1/6v4HoEm0clSOQGvTOPFBcXrP1LtWN/D6fdO19wPURHpE1SvY0UEH0wAdRjk3NBOEasHVypbRfE8O6w==
+  dependencies:
+    "@agoric/assert" "^0.3.14"
+    "@agoric/eventual-send" "^0.13.30"
+    "@agoric/marshal" "^0.4.28"
+    "@agoric/nat" "^4.1.0"
+    "@agoric/promise-kit" "^0.2.28"
+
+"@agoric/eventual-send@^0.13.30":
+  version "0.13.30"
+  resolved "https://registry.yarnpkg.com/@agoric/eventual-send/-/eventual-send-0.13.30.tgz#5addee2d18c165f477b89b7b4f44e48a4da29d17"
+  integrity sha512-jwn4o161Jm/TWcPg0pE3UtJ2y1/0FEFmDVivDJIqI+K5freXXwr0OT2TOIctQGdsvNASPtRZLrdVUk9diYLbYQ==
+
+"@agoric/marshal@^0.4.28":
+  version "0.4.28"
+  resolved "https://registry.yarnpkg.com/@agoric/marshal/-/marshal-0.4.28.tgz#cbbf9ebb41dcb382407af7a44d3f6eebc2d46726"
+  integrity sha512-Fc9qq4PtJipdmUMK1R/3R2cg+AO4rGvMvdbD0g9rNu5QP493ymQV2U3ytdpt8TNSbxqzfI+F7CnQEBq8fcSO3Q==
+  dependencies:
+    "@agoric/assert" "^0.3.14"
+    "@agoric/eventual-send" "^0.13.30"
+    "@agoric/nat" "^4.1.0"
+    "@agoric/promise-kit" "^0.2.28"
+
+"@agoric/nat@^4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@agoric/nat/-/nat-4.1.0.tgz#102794e033ffc183a20b0f86031a2e76d204b9f6"
+  integrity sha512-2oMoh3DMn0Fx8HChPPiH8irBNdT/33ttxAZJohhd3nU3gyBRQ1u+eEoOQWfSkrE6M02iMkQM7GE9MzGmjQ6bHg==
+
+"@agoric/promise-kit@^0.2.28":
+  version "0.2.28"
+  resolved "https://registry.yarnpkg.com/@agoric/promise-kit/-/promise-kit-0.2.28.tgz#6b054460ddcc981c75626d763e1d2d6c8ad2ce4b"
+  integrity sha512-nHlGbOCF0tLfDhCszEqWdS7lpTlSHCDsM+enYAN50rSAQ6d+eSvj0d+dnXm4Lwm/O2OWDWjAe54McR8Qa4cyYA==
+  dependencies:
+    "@agoric/eventual-send" "^0.13.30"
+
 "@babel/code-frame@7.10.4":
   version "7.10.4"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.10.4.tgz#168da1a36e90da68ae8d49c0f1b48c7c6249213a"
@@ -3104,6 +3149,13 @@ caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001109, can
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001191.tgz#bacb432b6701f690c8c5f7c680166b9a9f0843d9"
   integrity sha512-xJJqzyd+7GCJXkcoBiQ1GuxEiOBCLQ0aVW9HMekifZsAVGdj5eJ4mFB9fEhSHipq9IOk/QXFJUiIr9lZT+EsGw==
 
+captp-stream@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/captp-stream/-/captp-stream-3.0.0.tgz#4394334ce58ab9f71c48d5fc6442c12a7b0d7463"
+  integrity sha512-o2pULo5jDeHnfsSNmnGg2gqfakRRYR37xyGRU6Qhp1N0VXTEPTzNOC5JgK+4o30oOYZX5racI52Bnf/eEaAwiQ==
+  dependencies:
+    "@agoric/captp" "^1.10.6"
+
 capture-exit@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/capture-exit/-/capture-exit-2.0.0.tgz#fb953bfaebeb781f62898239dabb426d08a509a4"
@@ -4201,6 +4253,16 @@ duplexify@^3.4.2, duplexify@^3.6.0:
     readable-stream "^2.0.0"
     stream-shift "^1.0.0"
 
+duplexify@^4.1.1:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/duplexify/-/duplexify-4.1.2.tgz#18b4f8d28289132fa0b9573c898d9f903f81c7b0"
+  integrity sha512-fz3OjcNCHmRP12MJoZMPglx8m4rrFP8rovnk4vT8Fs+aonZoCwGg10dSsQsfP/E62eZcPTMSMP6686fu9Qlqtw==
+  dependencies:
+    end-of-stream "^1.4.1"
+    inherits "^2.0.3"
+    readable-stream "^3.1.1"
+    stream-shift "^1.0.0"
+
 ecc-jsbn@~0.1.1:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/ecc-jsbn/-/ecc-jsbn-0.1.2.tgz#3a83a904e54353287874c564b7549386849a98c9"
@@ -4272,7 +4334,7 @@ encodeurl@~1.0.2:
   resolved "https://registry.yarnpkg.com/encodeurl/-/encodeurl-1.0.2.tgz#ad3ff4c86ec2d029322f5a02c3a9a606c95b3f59"
   integrity sha1-rT/0yG7C0CkyL1oCw6mmBslbP1k=
 
-end-of-stream@^1.0.0, end-of-stream@^1.1.0:
+end-of-stream@^1.0.0, end-of-stream@^1.1.0, end-of-stream@^1.4.1:
   version "1.4.4"
   resolved "https://registry.yarnpkg.com/end-of-stream/-/end-of-stream-1.4.4.tgz#5ae64a5f45057baf3626ec14da0ca5e4b2431eb0"
   integrity sha512-+uw1inIHVPQoaVuHzRyXd21icM+cnt4CzD5rW+NC1wjOUSTOs+Te7FOv7AhN7vS9x/oIyhLP5PR1H+phQAHu5Q==
@@ -8862,6 +8924,15 @@ pumpify@^1.3.3:
     inherits "^2.0.3"
     pump "^2.0.0"
 
+pumpify@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/pumpify/-/pumpify-2.0.1.tgz#abfc7b5a621307c728b551decbbefb51f0e4aa1e"
+  integrity sha512-m7KOje7jZxrmutanlkS1daj1dS6z6BgslzOXmcSEpIlCxM3VJH7lG5QLeck/6hgF6F4crFf01UtQmNsJfweTAw==
+  dependencies:
+    duplexify "^4.1.1"
+    inherits "^2.0.3"
+    pump "^3.0.0"
+
 punycode@1.3.2:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-1.3.2.tgz#9653a036fb7c1ee42342f2325cceefea3926c48d"
@@ -9742,6 +9813,16 @@ serve-static@1.14.1:
     escape-html "~1.0.3"
     parseurl "~1.3.3"
     send "0.17.1"
+
+ses@^0.14.3:
+  version "0.14.4"
+  resolved "https://registry.yarnpkg.com/ses/-/ses-0.14.4.tgz#17d753d5fca460bfb362c2ed77e0bf7700f00e24"
+  integrity sha512-0ydKzChzQ/SgVn/rkzQ+sflYrxWRihtH2r7t5Vl92JFQbIJjJvp6vprs/1fwSsJppJg5drh8v6bTyaB6IizUCg==
+
+ses@^0.15.0:
+  version "0.15.0"
+  resolved "https://registry.yarnpkg.com/ses/-/ses-0.15.0.tgz#35c585dc890bee9ea2e34a84a1fe6078c77604dd"
+  integrity sha512-8v354F7Ed4k3QVGIxgtmWrY7vafE6435bYm3BycTtyFRJT2Pln2G3w5/LzhaVhQB+EMFfKkvbCaA+hmMp6A7+Q==
 
 set-blocking@^2.0.0:
   version "2.0.0"
