@@ -3149,10 +3149,10 @@ caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001109, can
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001191.tgz#bacb432b6701f690c8c5f7c680166b9a9f0843d9"
   integrity sha512-xJJqzyd+7GCJXkcoBiQ1GuxEiOBCLQ0aVW9HMekifZsAVGdj5eJ4mFB9fEhSHipq9IOk/QXFJUiIr9lZT+EsGw==
 
-captp-stream@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/captp-stream/-/captp-stream-3.0.0.tgz#4394334ce58ab9f71c48d5fc6442c12a7b0d7463"
-  integrity sha512-o2pULo5jDeHnfsSNmnGg2gqfakRRYR37xyGRU6Qhp1N0VXTEPTzNOC5JgK+4o30oOYZX5racI52Bnf/eEaAwiQ==
+captp-stream@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/captp-stream/-/captp-stream-3.0.1.tgz#262015a3c4321d386315a55a88d7430b1365fb0a"
+  integrity sha512-k4D9DPstyJkPM0ELdNQh+PkFrSMoA6/9PTu3YidadrKcRGgMpdsOUBoGWPqxM01s/31k4paS/ej66SGcMgoraw==
   dependencies:
     "@agoric/captp" "^1.10.6"
 

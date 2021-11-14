@@ -1,3 +1,4 @@
+import './lockdown';
 import makeCapTpFromStream from 'captp-stream';
 import './App.css';
 import { useState } from 'react';
