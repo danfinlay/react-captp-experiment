@@ -1,3 +1,13 @@
+# React CapTP Experiment 1
+
+Experimenting with doing React state management via [CapTP](https://github.com/Agoric/agoric-sdk/tree/master/packages/captp), rather than Redux or something else.
+
+You can see the setup shared state "bootstrap" being constructed in `src/App.js`. It includes a name getter, setter, and a promise-queue to allow components to continuously subscribe to updating values (but only as it's able to, in a way that could reasonably manage back-pressure if the host were on a separate machine with higher update speed, for example).
+
+You can see how a component consuming a CapTP object works in `src/NameComponent.js`. Just using regular hooks, this component is able to both get and set data, without having to emit an "action", but instead calling a regular promise-returning JS function, and subscribing to updates.
+
+Since the updating is triggered from the hook now instead of the props, we may actually be side-stepping some of the core benefits of React, and so this is mostly an exepriment to see what it's like to write with these two tools together, it isn't a prescription of a new way to build apps.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
