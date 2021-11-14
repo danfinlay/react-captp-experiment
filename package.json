@@ -2,12 +2,14 @@
   "name": "react-captp-experiment",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://danfinlay.github.io/react-captp-experiment",
   "dependencies": {
     "@agoric/eventual-send": "^0.13.30",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "captp-stream": "^3.0.0",
+    "gh-pages": "^3.2.3",
     "pumpify": "^2.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -19,6 +21,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
