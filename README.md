@@ -8,6 +8,8 @@ You can see how a component consuming a CapTP object works in `src/NameComponent
 
 Since the updating is triggered from the hook now instead of the props, we may actually be side-stepping some of the core benefits of React, and so this is mostly an exepriment to see what it's like to write with these two tools together, it isn't a prescription of a new way to build apps.
 
+For some reason, still having issues on the [demo page](https://danfinlay.github.io/react-captp-experiment/), but works if you pull it and build it locally.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
