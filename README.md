@@ -10,6 +10,8 @@ Since the updating is triggered from the hook now instead of the props, we may a
 
 For some reason, still having issues on the [demo page](https://danfinlay.github.io/react-captp-experiment/), but works if you pull it and build it locally.
 
+In some ways this feels like a sequel to my [Caputi](https://github.com/danfinlay/caputi) module, which was experimenting with making a data model framework that would then be easy to pass to a rendering system like this one. It didn't include promise queues, though, just event emitters, so it wouldn't be as efficient at many clients as this approach would be. I really recommend reading/watching [GTOR](https://github.com/kriskowal/gtor/) to get a sense of that difference.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
