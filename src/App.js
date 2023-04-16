@@ -1,7 +1,7 @@
 import './lockdown';
 import makeCapTpFromStream from 'captp-stream';
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import NameComponent from './NameComponent';
 import { serverApi } from './server';
 
@@ -22,13 +22,16 @@ function App() {
 
   const [bootstrap, setBootstrap] = useState(undefined);
   const [error, setError] = useState(undefined);
-  getBootstrap()
-  .then((bootstrap) => {
-    setBootstrap(bootstrap);
-  })
-  .catch((reason) => {
-    setError(reason);
-  });
+
+  useEffect(() => {
+    getBootstrap()
+    .then((bootstrap) => {
+      setBootstrap(bootstrap);
+    })
+    .catch((reason) => {
+      setError(reason);
+    });
+  }, [])
 
   let body = error || bootstrap ? <NameComponent bootstrap={bootstrap} E={E}/> : 'Loading'
   return (
