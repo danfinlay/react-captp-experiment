@@ -33,13 +33,42 @@ function App() {
     });
   }, [])
 
-  let body = error || bootstrap ? <NameComponent bootstrap={bootstrap} E={E}/> : 'Loading'
   return (
     <div className="App">
       <h1>CapTP React Test</h1>
-      { body }
+      <Body bootstrap={bootstrap} E={E} error={error}/>
     </div>
   );
+}
+
+function Body ({ bootstrap, E, error }) {
+  const [showName, setShowName] = useState(true);
+
+  if (error) {
+    return (
+      <div>
+        <p>Failed to load bootstrap</p>
+        <p>{error}</p>
+      </div>
+    )
+  }
+  if (!bootstrap) {
+    return (
+      <div>
+        <p>Loading...</p>
+      </div>
+    )
+  }
+
+  return (
+    <div>
+      show name:
+      <input type="checkbox" checked={showName} onChange={() => {
+        setShowName(!showName);
+      }}/>
+      {showName ? <NameComponent bootstrap={bootstrap} E={E}/> : null}
+    </div>
+  )
 }
 
 export default App;

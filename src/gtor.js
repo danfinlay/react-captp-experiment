@@ -11,7 +11,7 @@ export const defer = () => {
   return { promise, resolve, reject };
 };
 
-export const queue = () => {
+export const makeQueue = () => {
   const ends = defer();
   return {
     put(value) {
@@ -25,5 +25,62 @@ export const queue = () => {
       ends.promise = ends.promise.then(next => next.promise);
       return promise;
     },
+    async * [Symbol.asyncIterator] () {
+      while (true) {
+        yield await this.get();
+      }
+    }
   };
 };
+
+// new!
+
+export const queueWithCancel = (cancelPromise, baseQueue = makeQueue()) => {
+  return {
+    put(value) {
+      return Promise.race([
+        baseQueue.put(value),
+        cancelPromise,
+      ]);
+    },
+    get() {
+      return Promise.race([
+        baseQueue.get(),
+        cancelPromise,
+      ]);
+    },
+  }
+};
+
+export function makeStore (initialValue) {
+  let currentValue = initialValue;
+  const subscribers = [];
+  return {
+    get: () => currentValue,
+    put: (newValue) => {
+      currentValue = newValue;
+      subscribers.forEach(handler => handler(currentValue));
+    },
+    subscribe (handler) {
+      subscribers.push(handler);
+      return () => {
+        const index = subscribers.indexOf(handler);
+        if (index !== -1) {
+          subscribers.splice(index, 1);
+        }
+      };
+    },
+    subscribeByQueue () {
+      const queue = makeQueue();
+      const unsub = this.subscribe((value) => {
+        queue.put(value);
+      });
+      queue.put(currentValue);
+      return Object.freeze({ queue, unsub });
+    },
+    [Symbol.asyncIterator] () {
+      const { queue } = this.subscribeByQueue();
+      return queue[Symbol.asyncIterator]();
+    },
+  }
+}

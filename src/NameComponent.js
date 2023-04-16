@@ -2,19 +2,32 @@ import { useState, useEffect } from 'react';
 
 export default function NameComponent (props) {
 
-  const [ name, setNameSync ] = useState('Loading name...');
+  const [ name, setNameLocal ] = useState('Loading name...');
   const [ draftName, setDraftName ] = useState(name);
 
   const { E, bootstrap } = props;
 
   useEffect(() => {
-    E(bootstrap).getNameQueue()
-    .then(async (nameQueue) => {
+    const debugId = Math.random();
+    console.log(debugId, 'useEffect');
+    let canceled = false;
+    (async () => {
+      // captp does not like the wrapper object over the queue
+      // const nameStore = E(await E(bootstrap).getNameStore());
+      // const { queue: nameUpdateQueue } = E(await nameStore.subscribeByQueue())
+      const nameUpdateQueue = E(await E(bootstrap).subscribeByQueue())
+      // this is a memory leak since we are unable to unsubscribe
       while (true) {
-        const name = await E(nameQueue).get();
-        setNameSync(name);
+        const name = await nameUpdateQueue.get();
+        console.log(debugId, 'got name by get', name);
+        if (canceled) return;
+        setNameLocal(name);
       }
-    });
+    })();
+    return () => {
+      console.log(debugId, 'canceling')
+      canceled = true;
+    }
   }, []);
 
 
@@ -27,8 +40,9 @@ export default function NameComponent (props) {
         }}
       >
       </input>
-      <button onClick={() => {
-        E(bootstrap).setName(draftName)
+      <button onClick={async () => {
+        const nameStore = E(await E(bootstrap).getNameStore());
+        nameStore.put(draftName)
         .then((ret) => {
           console.log('name updated successfully!');
         })

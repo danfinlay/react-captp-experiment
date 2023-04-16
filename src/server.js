@@ -1,24 +1,21 @@
-const { queue, delay } = require('./gtor');
+import { makeStore } from './gtor';
 
 // Server
 // A bootstrap should be an object with only functions on it.
-
-const nameQueue = queue();
-nameQueue.put('Anon');
+const store = makeStore('Anon');
 
 const serverApi = harden({
-  getName: async () => {
-    return nameQueue.get();
+
+  async getNameStore () {
+    return store;
   },
 
-  getNameQueue: async () => {
-    return nameQueue;
+  // removing the wrapper object around the queue, bc captp doesnt like it
+  // this means we lose the ability to unsubscribe and get a memory leak
+  async subscribeByQueue () {
+    return store.subscribeByQueue().queue;
   },
 
-  setName: async (newName) => {
-    await delay(200);
-    return nameQueue.put(newName);
-  },
 });
 
 export { serverApi };
