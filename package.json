@@ -2,6 +2,7 @@
   "name": "react-captp-experiment",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "homepage": "https://danfinlay.github.io/react-captp-experiment",
   "dependencies": {
     "@agoric/eventual-send": "^0.13.30",
