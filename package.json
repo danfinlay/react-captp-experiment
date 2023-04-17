@@ -5,6 +5,7 @@
   "type": "module",
   "homepage": "https://danfinlay.github.io/react-captp-experiment",
   "dependencies": {
+    "@agoric/notifier": "^0.5.1",
     "@agoric/eventual-send": "^0.13.30",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",

@@ -84,3 +84,27 @@ export function makeStore (initialValue) {
     },
   }
 }
+
+export function asyncIterWithCancel (asyncIter, cancelPromise) {
+  const iterator = asyncIter[Symbol.asyncIterator]();
+  return {
+    async next() {
+      const { value, done } = await Promise.race([
+        iterator.next(),
+        cancelPromise.then(() => ({ done: true })),
+      ]);
+      return { value, done };
+    },
+    async return() {
+      await cancelPromise;
+      return iterator.return();
+    },
+    async throw(error) {
+      await cancelPromise;
+      return iterator.throw(error);
+    },
+    [Symbol.asyncIterator]() {
+      return this;
+    },
+  };
+};
