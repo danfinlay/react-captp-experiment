@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
-import { makeSubscriptionKit, observeIteration } from '@agoric/notifier';
+import { subscribeEach, observeIteration, makeSubscriptionKit } from '@agoric/notifier';
 
+// supports both "subscription" and "subscriber" APIs
 
 export const useAsync = (asyncFn, dependees) => {
   const memoizedAsync = useCallback(asyncFn, dependees);
@@ -53,11 +54,47 @@ export const useAgoricSubscription = (subscription) => {
   return value;
 }
 
+export const useAgoricSubscriber = (subscriber) => {
+  const [ value, setValue ] = useState();
+
+  useEffect(() => {
+    // allow the subscriber to be set later
+    if (!subscriber) {
+      return;
+    }
+    // update local value on every update
+    let stop = false;
+    (async () => {
+      for await (const name of subscribeEach(subscriber)) {
+        if (stop) {
+          return;
+        }
+        setValue(name);
+      }
+    })();
+    // cleanup subscriber
+    return () => {
+      stop = true;
+    }
+  }, [subscriber]);
+
+  return value;
+}
+
 export const useAgoricSubscriptionGetter = (subscriptionGetter, dependees) => {
   const [ sub, subError ] = useAsync(
     subscriptionGetter,
     dependees,
   );
   const name = useAgoricSubscription(sub);
+  return [name, subError];
+}
+
+export const useAgoricSubscriberGetter = (subscriberGetter, dependees) => {
+  const [ sub, subError ] = useAsync(
+    subscriberGetter,
+    dependees,
+  );
+  const name = useAgoricSubscriber(sub);
   return [name, subError];
 }

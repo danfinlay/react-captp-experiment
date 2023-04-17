@@ -1,11 +1,15 @@
 import { useState } from 'react';
-import { useAgoricSubscriptionGetter } from './util';
+import { useAgoricSubscriptionGetter, useAgoricSubscriberGetter } from './util';
 
 export default function NameComponent (props) {
   const { E, bootstrap } = props;
 
-  const [ name, subError ] = useAgoricSubscriptionGetter(
-    () => E(bootstrap).subscribeByAgoric(),
+  // const [ name, subError ] = useAgoricSubscriptionGetter(
+  //   () => E(bootstrap).subscriptionByAgoric(),
+  //   []
+  // )
+  const [ name, subError ] = useAgoricSubscriberGetter(
+    () => E(bootstrap).subscriberByAgoric(),
     []
   )
   const [ draftName, setDraftName ] = useState(name);
@@ -32,5 +36,4 @@ export default function NameComponent (props) {
       }}>Change</button>
     </div>
   );
-
 }

@@ -1,5 +1,5 @@
 import { makeStore } from './gtor';
-import { makeSubscriptionKit } from '@agoric/notifier';
+import { makeSubscriptionKit, makePublishKit } from '@agoric/notifier';
 
 // Server
 // A bootstrap should be an object with only functions on it.
@@ -17,7 +17,7 @@ const serverApi = harden({
     return store.subscribeByQueue().queue;
   },
 
-  async subscribeByAgoric () {
+  async subscriptionByAgoric () {
     const { publication, subscription } = makeSubscriptionKit();
 
     publication.updateState(store.get());
@@ -26,6 +26,17 @@ const serverApi = harden({
     });
 
     return subscription;
+  },
+
+  async subscriberByAgoric () {
+    const { publisher, subscriber } = makePublishKit();
+
+    publisher.publish(store.get());
+    store.subscribe((value) => {
+      publisher.publish(value);
+    });
+
+    return subscriber;
   },
 
 });
